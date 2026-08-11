@@ -5,13 +5,14 @@
   position: relative;
   overflow: hidden;
 
-  /* ===== Panel slide speed controls =====
-     각 슬라이드 그룹(a/b/c)의 이동 속도를 개별적으로 조정할 수 있는 변수.
-     값을 바꾸면 해당 그룹에 속한 모든 요소(.image/.frame, .back-down/.frame-2, .back-up/.frame-3)의
-     transform transition 속도가 함께 바뀝니다. */
-  --panel-slide-a-speed: 0.35s;
-  --panel-slide-b-speed: 0.35s;
-  --panel-slide-c-speed: 0.3s;
+  /* ===== Panel slide speed controls ===== */
+  --panel-slide-a-speed: 0.45s;
+  --panel-slide-b-speed: 0.45s;
+  --panel-slide-c-speed: 0.45s;
+
+  /* ===== Text transition speed controls ===== */
+  --title-wipe-speed: 0.45s;
+  --text-fade-speed: 0.15s;
 }
 
 .macbook-air .back-down {
@@ -21,7 +22,7 @@
   aspect-ratio: 597 / 708;
   left: 50%;
   transform: translateX(calc(-50% - 9.92vh + var(--panel-slide-b, 0vw)));
-  transition: transform var(--panel-slide-b-speed, 0.3s) ease;
+  transition: transform var(--panel-slide-b-speed) ease;
 }
 
 .macbook-air .back-up {
@@ -31,7 +32,7 @@
   aspect-ratio: 829 / 787;
   left: 50%;
   transform: translateX(calc(-50% - 8.83vh + var(--panel-slide-c, 0vw)));
-  transition: transform var(--panel-slide-c-speed, 0.3s) ease;
+  transition: transform var(--panel-slide-c-speed) ease;
 }
 
 .macbook-air .image {
@@ -41,21 +42,7 @@
   aspect-ratio: 1107 / 290;
   left: 50%;
   transform: translateX(calc(-50% - 1.14vh + var(--panel-slide-a, 0vw)));
-  transition: transform var(--panel-slide-a-speed, 0.3s) ease;
-}
-
-.macbook-air .DR-OFF-TIME-SALE {
-  position: absolute;
-  top: 50%;
-  right: 5.7vw;
-  transform: translateY(-50%);
-  font-family: "Gambarino-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 4.5vw;
-  text-align: right;
-  letter-spacing: 0;
-  line-height: 1.02;
+  transition: transform var(--panel-slide-a-speed) ease;
 }
 
 .macbook-air .text-wrapper {
@@ -70,6 +57,7 @@
   text-align: justify;
   letter-spacing: 0;
   line-height: 1.5vw;
+  transition: opacity var(--text-fade-speed) ease;
 }
 
 .macbook-air .div {
@@ -114,7 +102,7 @@
   letter-spacing: 0;
   line-height: 0vw;
   white-space: nowrap;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity var(--text-fade-speed) ease;
 }
 
 .macbook-air .text-wrapper-2:hover {
@@ -133,7 +121,7 @@
   letter-spacing: 0;
   line-height: 0vw;
   white-space: nowrap;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity var(--text-fade-speed) ease;
 }
 
 .macbook-air .text-wrapper-3:hover {
@@ -149,7 +137,7 @@
   position: absolute;
   border: 1px solid;
   border-color: #cfcfcf;
-  transition: transform var(--panel-slide-a-speed, 0.3s) ease;
+  transition: transform var(--panel-slide-a-speed) ease;
 }
 
 .macbook-air .ellipse {
@@ -205,7 +193,7 @@
   position: absolute;
   border: 1px solid;
   border-color: #cfcfcf;
-  transition: transform var(--panel-slide-b-speed, 0.3s) ease;
+  transition: transform var(--panel-slide-b-speed) ease;
 }
 
 .macbook-air .frame-3 {
@@ -217,7 +205,7 @@
   position: absolute;
   border: 1px solid;
   border-color: #cfcfcf;
-  transition: transform var(--panel-slide-c-speed, 0.3s) ease;
+  transition: transform var(--panel-slide-c-speed) ease;
 }
 
 .macbook-air a:focus-visible {
@@ -226,7 +214,6 @@
 }
 
 /* ===== Notice / Character overlay panels ===== */
-
 .macbook-air #character,
 .macbook-air #notice {
   display: none;
@@ -236,54 +223,82 @@
 }
 
 .macbook-air #character:target,
-.macbook-air #notice:target {
+.macbook-air #notice:target,
+.macbook-air #character.is-closing,
+.macbook-air #notice.is-closing {
   display: block;
 }
 
-/* ===== Notice panel slide ===== */
-.macbook-air:has(#notice:target) {
-  --panel-slide-a: -30vw;
-  --panel-slide-b: -40vw;
-  --panel-slide-c: -15vw;
-}
-
-/* ===== Character panel slide ===== */
+/* ===== Notice / Character panel slide ===== */
+.macbook-air:has(#notice:target),
 .macbook-air:has(#character:target) {
   --panel-slide-a: -30vw;
   --panel-slide-b: -40vw;
   --panel-slide-c: -15vw;
 }
 
-/* ===== Hide base texts while a panel is open =====
-   #notice 또는 #character로 이동하면 '대략의 효능: ~', 'Character *', 'Notice *',
-   'DR$$73%OFF TIME-SALE!' 텍스트를 숨김.
-   추후 트랜지션을 추가할 예정이므로, 여기 opacity/visibility 규칙에
-   transition 속성만 추가하면 됩니다. */
+.macbook-air:has(#notice.is-closing),
+.macbook-air:has(#character.is-closing) {
+  --panel-slide-a: 0vw;
+  --panel-slide-b: 0vw;
+  --panel-slide-c: 0vw;
+}
+
+/* ===== Hide base texts while a panel is open ===== */
 .macbook-air:has(#notice:target) .text-wrapper,
 .macbook-air:has(#notice:target) .text-wrapper-2,
 .macbook-air:has(#notice:target) .text-wrapper-3,
-.macbook-air:has(#notice:target) .DR-OFF-TIME-SALE,
 .macbook-air:has(#character:target) .text-wrapper,
 .macbook-air:has(#character:target) .text-wrapper-2,
-.macbook-air:has(#character:target) .text-wrapper-3,
-.macbook-air:has(#character:target) .DR-OFF-TIME-SALE {
+.macbook-air:has(#character:target) .text-wrapper-3 {
   opacity: 0;
-  visibility: hidden;
   pointer-events: none;
 }
 
-.macbook-air .notice-close {
+.macbook-air:has(#notice.is-closing) .text-wrapper,
+.macbook-air:has(#notice.is-closing) .text-wrapper-2,
+.macbook-air:has(#notice.is-closing) .text-wrapper-3,
+.macbook-air:has(#character.is-closing) .text-wrapper,
+.macbook-air:has(#character.is-closing) .text-wrapper-2,
+.macbook-air:has(#character.is-closing) .text-wrapper-3 {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity var(--text-fade-speed) ease;
+}
+
+/* ===== 1. DR-OFF-TIME-SALE (메인 타이틀) ===== */
+
+.macbook-air .DR-OFF-TIME-SALE {
   position: absolute;
-  top: 5.7vh;
+  top: 50%;
   right: 5.7vw;
+  transform: translateY(-50%);
   font-family: "Gambarino-Regular", Helvetica;
   font-weight: 400;
   color: #ffffff;
-  font-size: 2vw;
-  line-height: 1;
+  font-size: 4.5vw;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 1.02;
+  clip-path: inset(0 0 0 0);
 }
 
-.macbook-air .notice-title {
+.macbook-air:has(#notice:target) .DR-OFF-TIME-SALE,
+.macbook-air:has(#character:target) .DR-OFF-TIME-SALE {
+  animation: wipeOut var(--title-wipe-speed) ease forwards;
+  pointer-events: none;
+}
+
+.macbook-air:has(#notice.is-closing) .DR-OFF-TIME-SALE,
+.macbook-air:has(#character.is-closing) .DR-OFF-TIME-SALE {
+  animation: wipeIn var(--title-wipe-speed) ease forwards;
+}
+
+
+/* ===== 2. Notice / Character 타이틀 ===== */
+
+.macbook-air .notice-title,
+.macbook-air .character-title {
   position: absolute;
   right: 5.31vw;
   bottom: 7.33vh;
@@ -295,6 +310,83 @@
   letter-spacing: 0;
   line-height: 5.08vw;
   white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+}
+
+.macbook-air #notice:target .notice-title,
+.macbook-air #character:target .character-title {
+  animation: wipeIn var(--title-wipe-speed) ease forwards;
+}
+
+.macbook-air #notice.is-closing .notice-title,
+.macbook-air #character.is-closing .character-title {
+  animation: wipeOut var(--title-wipe-speed) ease forwards;
+}
+
+
+/* ===== 3. Notice / Character 본문 텍스트 페이드 애니메이션 ===== */
+
+/* 기본 숨김 상태 및 transition 지정 (text-wrapper와 동일한 속도) */
+.macbook-air .notice-rules-left,
+.macbook-air .notice-rules-right,
+.macbook-air .character-heading,
+.macbook-air .character-commu,
+.macbook-air .character-trpg {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--text-fade-speed) ease;
+}
+
+/* 패널이 열렸을 때: 페이드인 */
+.macbook-air #notice:target .notice-rules-left,
+.macbook-air #notice:target .notice-rules-right,
+.macbook-air #character:target .character-heading,
+.macbook-air #character:target .character-commu,
+.macbook-air #character:target .character-trpg {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 패널이 닫힐 때 (.is-closing 시): 타이틀 시작과 동시에 페이드아웃 */
+.macbook-air #notice.is-closing .notice-rules-left,
+.macbook-air #notice.is-closing .notice-rules-right,
+.macbook-air #character.is-closing .character-heading,
+.macbook-air #character.is-closing .character-commu,
+.macbook-air #character.is-closing .character-trpg {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ===== 4. 공통 키프레임 ===== */
+
+@keyframes wipeOut {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+@keyframes wipeIn {
+  0% {
+    clip-path: inset(0 0 0 100%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.macbook-air .notice-close {
+  position: absolute;
+  top: 5.7vh;
+  right: 5.7vw;
+  font-family: "Gambarino-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 2vw;
+  line-height: 1;
 }
 
 .macbook-air .notice-rules-left {
@@ -334,20 +426,6 @@
   color: #ffffff;
   font-size: 2vw;
   line-height: 1;
-}
-
-.macbook-air .character-title {
-  position: absolute;
-  right: 5.31vw;
-  bottom: 7.33vh;
-  font-family: "Gambarino-Regular", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 5vw;
-  text-align: right;
-  letter-spacing: 0;
-  line-height: 5.08vw;
-  white-space: nowrap;
 }
 
 .macbook-air .character-heading {
