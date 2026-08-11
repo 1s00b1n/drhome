@@ -1,123 +1,140 @@
 .macbook-air {
-  background-color: #0e0e0e;
-  width: 100%;
-  min-width: 1280px;
-  min-height: 832px;
+  background-color: #000000;
+  width: 100vw;
+  height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .macbook-air .back-down {
   position: absolute;
-  top: 0;
-  left: 259px;
-  width: 597px;
-  height: 708px;
+  top: 0vh;
+  height: 85.1vh;
+  aspect-ratio: 597 / 708;
+  left: 50%;
+  transform: translateX(calc(-50% - 9.92vh));
 }
 
 .macbook-air .back-up {
   position: absolute;
-  top: 45px;
-  left: 152px;
-  width: 829px;
-  height: 787px;
+  top: 5.41vh;
+  height: 94.59vh;
+  aspect-ratio: 829 / 787;
+  left: 50%;
+  transform: translateX(calc(-50% - 8.83vh));
 }
 
 .macbook-air .image {
   position: absolute;
-  top: 454px;
-  left: 77px;
-  width: 1107px;
-  height: 290px;
+  top: 54.57vh;
+  height: 34.86vh;
+  aspect-ratio: 1107 / 290;
+  left: 50%;
+  transform: translateX(calc(-50% - 1.14vh));
 }
 
 .macbook-air .DR-OFF-TIME-SALE {
   position: absolute;
-  top: 347px;
-  left: 881px;
+  top: 50%;
+  right: 5.7vw;
+  transform: translateY(-50%);
   font-family: "Gambarino-Regular", Helvetica;
   font-weight: 400;
   color: #ffffff;
-  font-size: 64px;
+  font-size: 4.5vw;
   text-align: right;
   letter-spacing: 0;
-  line-height: 65px;
+  line-height: 1.02;
 }
 
 .macbook-air .text-wrapper {
   position: absolute;
-  top: 63px;
-  left: 73px;
-  width: 182px;
-  font-family: "?????-Regular", Helvetica;
+  top: 7.57vh;
+  left: 5.7vw;
+  width: 14.22vw;
+  font-family: "JoseonGulim", Helvetica;
   font-weight: 400;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 0.8vw;
   text-align: justify;
   letter-spacing: 0;
-  line-height: 30px;
+  line-height: 1.5vw;
 }
 
 .macbook-air .div {
   position: absolute;
-  top: 619px;
-  left: 73px;
+  bottom: 17.79vh;
+  left: 5.7vw;
   font-family: "Gambarino-Regular", Helvetica;
   font-weight: 400;
   color: #ffffff;
-  font-size: 32px;
+  font-size: 2.5vw;
   text-align: right;
   letter-spacing: 0;
-  line-height: 65px;
+  line-height: 5vw;
   white-space: nowrap;
+  display: block;
+  width: max-content;
 }
 
 .macbook-air .MUSIC-DR-NOW {
   position: absolute;
-  top: 677px;
-  left: 73px;
-  width: 178px;
-  font-family: "?????-Regular", Helvetica;
+  bottom: 7.81vh;
+  left: 5.7vw;
+  width: 13.91vw;
+  font-family: "JoseonGulim", Helvetica;
   font-weight: 400;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 0.8vw;
   text-align: justify;
   letter-spacing: 0;
-  line-height: 30px;
+  line-height: 1.5vw;
 }
 
 .macbook-air .text-wrapper-2 {
   position: absolute;
-  top: 100px;
-  left: 1057px;
+  top: 12.02vh;
+  right: 5.7vw;
   font-family: "Gambarino-Regular", Helvetica;
   font-weight: 400;
   color: #ffffff;
-  font-size: 32px;
+  font-size: 2.5vw;
   text-align: right;
   letter-spacing: 0;
-  line-height: 65px;
+  line-height: 5vw;
   white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+
+.macbook-air .text-wrapper-2:hover {
+  transform: translateX(-0.6vw);
 }
 
 .macbook-air .text-wrapper-3 {
   position: absolute;
-  top: 59px;
-  left: 1102px;
+  top: 7.09vh;
+  right: 5.7vw;
   font-family: "Gambarino-Regular", Helvetica;
   font-weight: 400;
   color: #ffffff;
-  font-size: 32px;
+  font-size: 2.5vw;
   text-align: right;
   letter-spacing: 0;
-  line-height: 65px;
+  line-height: 5vw;
   white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+
+.macbook-air .text-wrapper-3:hover {
+  transform: translateX(-0.6vw);
 }
 
 .macbook-air .frame {
-  top: 501px;
-  left: 746px;
-  width: 123px;
-  height: 85px;
+  top: 60.22vh;
+  left: 50%;
+  transform: translateX(calc(-50% + 20.13vh));
+  width: 14.78vh;
+  height: 10.22vh;
   position: absolute;
   border: 1px solid;
   border-color: #cfcfcf;
@@ -137,7 +154,7 @@
 
 .macbook-air .img {
   top: -3px;
-  right: 0;
+  right: -3px;
   position: absolute;
   width: 7px;
   height: 7px;
@@ -168,29 +185,25 @@
 }
 
 .macbook-air .frame-2 {
-  top: 312px;
-  left: 92px;
-  width: 393px;
-  height: 73px;
+  top: 37.5vh;
+  left: 50%;
+  transform: translateX(calc(-50% - 42.25vh));
+  width: 47.24vh;
+  height: 8.77vh;
   position: absolute;
   border: 1px solid;
   border-color: #cfcfcf;
 }
 
 .macbook-air .frame-3 {
-  top: 97px;
-  left: 437px;
-  width: 95px;
-  height: 76px;
+  top: 11.66vh;
+  left: 50%;
+  transform: translateX(calc(-50% - 18.69vh));
+  width: 11.42vh;
+  height: 9.13vh;
   position: absolute;
   border: 1px solid;
   border-color: #cfcfcf;
-}
-/* Inject the following rules after the original CSS code. */
-
-.macbook-air .div {
-  display: block;
-  width: max-content;
 }
 
 .macbook-air a:focus-visible {

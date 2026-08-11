@@ -6,12 +6,17 @@
 <link rel="stylesheet" href="globals.css">
 <link rel="stylesheet" href="style.css">
 <title>DR$$73%OFF Time-Sale</title>
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://www.google.com">
+<link rel="dns-prefetch" href="https://www.youtube.com">
+<script src="https://www.youtube.com/iframe_api"></script>
 </head>
+
 <body>
 <main class="macbook-air" aria-labelledby="sale-title">
-<img class="back-down" src="img/back-down.svg" alt="" aria-hidden="true">
-<img class="back-up" src="img/back-up.svg" alt="" aria-hidden="true">
-<img class="image" src="img/image.svg" alt="" aria-hidden="true">
+<img class="back-down" src="images/back_down.png" alt="" aria-hidden="true">
+<img class="back-up" src="images/back_up.png" alt="" aria-hidden="true">
+<img class="image" src="images/새.png" alt="" aria-hidden="true">
 <section aria-label="상품 효능">
 <p class="text-wrapper">
 대략의 효능: 성인병 및 골다공증 예방 효과 기관지 건강에 좋습니다 항암작용 피부 미용에 도움을 줍니다 혈압 안정 효과 관절염을 개선합니다 면역력을 높입니다 부모님 술안주 어린이 영양간식으로 인기만점
@@ -26,33 +31,65 @@ TIME-SALE!
 <a class="text-wrapper-3" href="#notice">Notice *</a>
 </nav>
 <section aria-label="음악 정보">
-<a class="div" href="#music-details" lang="en">click!</a>
+<a class="div" href="#music-details" lang="en" id="music-toggle">click!</a>
 <p class="MUSIC-DR-NOW" id="music-details" lang="en">
-//MUSIC_01_DR<br>
+//MUSIC_VENUS_THE SOLUTIONS<br>
 { NOW PLAYING == … }<br>
 { NEXT PLAYING == … }
       </p>
+<div id="yt-player" style="position:absolute; width:1px; height:1px; overflow:hidden;"></div>
 </section>
 <figure class="frame" aria-hidden="true">
 <div class="ellipse"></div>
-<img class="img" src="img/ellipse-2-3.svg" alt="">
+<img class="img" src="images/Ellipse 2.svg" alt="">
 <div class="ellipse-2"></div>
 <div class="ellipse-3"></div>
 </figure>
 <figure class="frame-2" aria-hidden="true">
 <div class="ellipse"></div>
-<img class="img" src="img/ellipse-2.svg" alt="">
+<img class="img" src="images/Ellipse 2.svg" alt="">
 <div class="ellipse-2"></div>
 <div class="ellipse-3"></div>
 </figure>
 <figure class="frame-3" aria-hidden="true">
 <div class="ellipse"></div>
-<img class="img" src="img/ellipse-2-2.svg" alt="">
+<img class="img" src="images/Ellipse 2.svg" alt="">
 <div class="ellipse-2"></div>
 <div class="ellipse-3"></div>
 </figure>
 <section id="character" hidden aria-label="Character"></section>
 <section id="notice" hidden aria-label="Notice"></section>
 </main>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let ytPlayer;
+  let isPlaying = false;
+
+  function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('yt-player', {
+      height: '1',
+      width: '1',
+      videoId: 'e28036ValjA',
+      playerVars: {
+        autoplay: 0,
+        controls: 0
+      }
+    });
+  }
+
+  document.getElementById('music-toggle').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!ytPlayer || typeof ytPlayer.playVideo !== 'function') return;
+
+    if (isPlaying) {
+      ytPlayer.pauseVideo();
+    } else {
+      ytPlayer.playVideo();
+    }
+    isPlaying = !isPlaying;
+  });
+</script>
+
 </body>
 </html>
