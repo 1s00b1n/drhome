@@ -12,7 +12,8 @@
   height: 85.1vh;
   aspect-ratio: 597 / 708;
   left: 50%;
-  transform: translateX(calc(-50% - 9.92vh));
+  transform: translateX(calc(-50% - 9.92vh + var(--panel-slide-b, 0vw)));
+  transition: transform 0.3s ease;
 }
 
 .macbook-air .back-up {
@@ -21,7 +22,8 @@
   height: 94.59vh;
   aspect-ratio: 829 / 787;
   left: 50%;
-  transform: translateX(calc(-50% - 8.83vh));
+  transform: translateX(calc(-50% - 8.83vh + var(--panel-slide-c, 0vw)));
+  transition: transform 0.3s ease;
 }
 
 .macbook-air .image {
@@ -30,7 +32,8 @@
   height: 34.86vh;
   aspect-ratio: 1107 / 290;
   left: 50%;
-  transform: translateX(calc(-50% - 1.14vh));
+  transform: translateX(calc(-50% - 1.14vh + var(--panel-slide-a, 0vw)));
+  transition: transform 0.3s ease;
 }
 
 .macbook-air .DR-OFF-TIME-SALE {
@@ -132,12 +135,13 @@
 .macbook-air .frame {
   top: 60.22vh;
   left: 50%;
-  transform: translateX(calc(-50% + 20.13vh));
+  transform: translateX(calc(-50% + 20.13vh + var(--panel-slide-a, 0vw)));
   width: 14.78vh;
   height: 10.22vh;
   position: absolute;
   border: 1px solid;
   border-color: #cfcfcf;
+  transition: transform 0.3s ease;
 }
 
 .macbook-air .ellipse {
@@ -187,26 +191,202 @@
 .macbook-air .frame-2 {
   top: 37.5vh;
   left: 50%;
-  transform: translateX(calc(-50% - 42.25vh));
+  transform: translateX(calc(-50% - 42.25vh + var(--panel-slide-b, 0vw)));
   width: 47.24vh;
   height: 8.77vh;
   position: absolute;
   border: 1px solid;
   border-color: #cfcfcf;
+  transition: transform 0.3s ease;
 }
 
 .macbook-air .frame-3 {
   top: 11.66vh;
   left: 50%;
-  transform: translateX(calc(-50% - 18.69vh));
+  transform: translateX(calc(-50% - 18.69vh + var(--panel-slide-c, 0vw)));
   width: 11.42vh;
   height: 9.13vh;
   position: absolute;
   border: 1px solid;
   border-color: #cfcfcf;
+  transition: transform 0.3s ease;
 }
 
 .macbook-air a:focus-visible {
   outline: 2px solid #4a90e2;
   outline-offset: 4px;
+}
+
+/* ===== Notice / Character overlay panels ===== */
+
+.macbook-air #character,
+.macbook-air #notice {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.macbook-air #character:target,
+.macbook-air #notice:target {
+  display: block;
+}
+
+/* ===== Notice panel slide ===== */
+.macbook-air:has(#notice:target) {
+  --panel-slide-a: -25vw;
+  --panel-slide-b: -54vw;
+  --panel-slide-c: -30vw;
+}
+
+/* ===== Character panel slide ===== */
+.macbook-air:has(#character:target) {
+  --panel-slide-a: -30vw;
+  --panel-slide-b: -67vw;
+  --panel-slide-c: -40vw;
+}
+
+.macbook-air .notice-close {
+  position: absolute;
+  top: 5.7vh;
+  right: 5.7vw;
+  font-family: "Gambarino-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 2vw;
+  line-height: 1;
+}
+
+.macbook-air .notice-title {
+  position: absolute;
+  right: 5.31vw;
+  bottom: 7.33vh;
+  font-family: "Gambarino-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 5vw;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 5.08vw;
+  white-space: nowrap;
+}
+
+.macbook-air .notice-rules-left {
+  position: absolute;
+  top: 9.25vh;
+  left: 35.55vw;
+  width: 19.53vw;
+  font-family: "JoseonGulim", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 1.09vw;
+  text-align: justify;
+  letter-spacing: 0;
+  line-height: 2.34vw;
+}
+
+.macbook-air .notice-rules-right {
+  position: absolute;
+  top: 9.25vh;
+  left: 57.89vw;
+  width: 19.3vw;
+  font-family: "JoseonGulim", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 1.09vw;
+  text-align: justify;
+  letter-spacing: 0;
+  line-height: 2.34vw;
+}
+
+.macbook-air .character-close {
+  position: absolute;
+  top: 5.7vh;
+  right: 5.7vw;
+  font-family: "Gambarino-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 2vw;
+  line-height: 1;
+}
+
+.macbook-air .character-title {
+  position: absolute;
+  right: 5.31vw;
+  bottom: 7.33vh;
+  font-family: "Gambarino-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 5vw;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 5.08vw;
+  white-space: nowrap;
+}
+
+.macbook-air .character-heading {
+  position: absolute;
+  top: 7.09vh;
+  font-family: "Gambarino-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 2.5vw;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 5.08vw;
+  white-space: nowrap;
+}
+
+.macbook-air .character-heading-commu {
+  left: 20.08vw;
+}
+
+.macbook-air .character-heading-trpg {
+  left: 51.41vw;
+}
+
+.macbook-air .character-commu,
+.macbook-air .character-trpg {
+  display: inline-flex;
+  align-items: center;
+  position: absolute;
+  top: 15.99vh;
+}
+
+.macbook-air .character-commu {
+  left: 20vw;
+}
+
+.macbook-air .character-trpg {
+  left: 51.41vw;
+}
+
+.macbook-air .character-col {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.39vw;
+  padding: 0 0.78vw;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.macbook-air .character-item {
+  position: relative;
+  align-self: stretch;
+  font-family: "JoseonGulim", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 1.09vw;
+  letter-spacing: 0;
+  line-height: 2.34vw;
+}
+
+.macbook-air .character-item-first {
+  margin-top: -0.12vh;
+}
+
+.macbook-air .character-col-nowrap .character-item {
+  width: fit-content;
+  white-space: nowrap;
 }
