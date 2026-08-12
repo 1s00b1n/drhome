@@ -12,7 +12,7 @@ body {
   margin: 0px;
   min-height: 100%;
   height: 100%;
-  background-color: #0F0F0F;
+  background-color: #191919;
 }
 /* a blue color as a generic focus style */
 button:focus-visible {
@@ -21,6 +21,24 @@ button:focus-visible {
 }
 a {
   text-decoration: none;
+}
+::selection {
+  background-color: #0000ff;
+  color: #FFFFFF;
+}
+::-moz-selection {
+  background-color: #0000ff;
+  color: #FFFFFF;
+}
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 /* @FONTWARNING[{"type": "restricted", "family": "Gambarino-Regular", "weight": "400", "style": "normal", "allowsCrossOrigin": false}] */
 
